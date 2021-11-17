@@ -1,0 +1,1270 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Zekra API Documentation Swagger",
+        "description": "Zekra API Documentation",
+        "contact": {
+            "email": "info@zekra.com"
+        },
+        "version": "1.0.0"
+    },
+    "host": "www.zekra.com",
+    "basePath": "",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/api/v2/register": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Register user",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "user name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "user address",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "user phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "user password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "platform",
+                        "in": "query",
+                        "description": "platform",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "device_token",
+                        "in": "query",
+                        "description": "device_token",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ip_address",
+                        "in": "query",
+                        "description": "ip_address",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/login": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Log in",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "user password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/sendCode": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Send code to user mail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user email",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "code sent to your mail",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "user not found"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/checkCode": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "check code which sent to user mail",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "the code which send to mail",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "user not found"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/updatePassword": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "updatePassword of user with new password",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "new_password",
+                        "in": "query",
+                        "description": "new_password of user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "confirmation_password",
+                        "in": "query",
+                        "description": "confirmation_password of user password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "user not found"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/cities": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "description": "get cities",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/countryCities": {
+            "post": {
+                "tags": [
+                    "countries"
+                ],
+                "description": "get cities by country id",
+                "parameters": [
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "country_id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/cities/1": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "description": "get cities by id",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/countries": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "description": "get countries",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/coupons/12321": {
+            "get": {
+                "tags": [
+                    "coupons"
+                ],
+                "description": "get coupon value by coupon code",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/languages": {
+            "get": {
+                "tags": [
+                    "languages"
+                ],
+                "description": "get available languages",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/myOrders": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "get user orders",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/orderDetails": {
+            "post": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "order Details",
+                "parameters": [
+                    {
+                        "name": "order_id",
+                        "in": "query",
+                        "description": "order_id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/user/orders/1/refund": {
+            "post": {
+                "tags": [
+                    "refunds"
+                ],
+                "description": "refund order by id",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/orders": {
+            "post": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "create an order",
+                "parameters": [
+                    {
+                        "name": "address_id",
+                        "in": "query",
+                        "description": "address_id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/orders/1/pay": {
+            "put": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "pay for order with order id",
+                "parameters": [
+                    {
+                        "name": "albums_count",
+                        "in": "query",
+                        "description": "albums_count",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "payment_method",
+                        "in": "query",
+                        "description": "payment_method options credit_card , credit_points",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "discount_code",
+                        "in": "query",
+                        "description": "discount_code",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/orders/price": {
+            "get": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "get order prices",
+                "parameters": [
+                    {
+                        "name": "albums_count",
+                        "in": "query",
+                        "description": "albums_count",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/orders/1/albums/base64": {
+            "post": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "upload images for order with base 64",
+                "parameters": [
+                    {
+                        "name": "albums[0]",
+                        "in": "query",
+                        "description": "albums[0] array of albums",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/orders/1/albums/multipart": {
+            "post": {
+                "tags": [
+                    "orders"
+                ],
+                "description": "upload images for order with multipart",
+                "parameters": [
+                    {
+                        "name": "albums[0][images][]",
+                        "in": "query",
+                        "description": "albums[0][images][] array of albums images",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "albums[0][album_name]",
+                        "in": "query",
+                        "description": "albums[0][album_name]",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "albums[0][album_count]",
+                        "in": "query",
+                        "description": "albums[0][album_count]",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/packages": {
+            "get": {
+                "tags": [
+                    "packages"
+                ],
+                "description": "get all packages",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/packages/1/purchase": {
+            "post": {
+                "tags": [
+                    "packages"
+                ],
+                "description": "purchase a package by id",
+                "parameters": [
+                    {
+                        "name": "card_token",
+                        "in": "query",
+                        "description": "card_token(tok_visa)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/user/cards": {
+            "get": {
+                "tags": [
+                    "payments"
+                ],
+                "description": "get user cards",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "payments"
+                ],
+                "description": "create user card",
+                "parameters": [
+                    {
+                        "name": "card_token",
+                        "in": "query",
+                        "description": "card_token(tok_visa)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exp_month",
+                        "in": "query",
+                        "description": "exp_month",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "exp_year",
+                        "in": "query",
+                        "description": "exp_year",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "last4",
+                        "in": "query",
+                        "description": "last4",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "brand",
+                        "in": "query",
+                        "description": "brand visa",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "default",
+                        "in": "query",
+                        "description": "default 0 => false, 1 => true",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/user/cards/1/default": {
+            "put": {
+                "tags": [
+                    "payments"
+                ],
+                "description": "set payment as default card",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/user/cards/1": {
+            "delete": {
+                "tags": [
+                    "payments"
+                ],
+                "description": "deleteCard user card",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/auth/facebook": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "Auth with facebook",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "facebook token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v2/user/changePassword": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "change user password",
+                "parameters": [
+                    {
+                        "name": "old_password",
+                        "in": "query",
+                        "description": "user old_password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "new_password",
+                        "in": "query",
+                        "description": "new_password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/user/profile": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "update user info",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "user name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "country_id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "user address",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "user phone",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "city_id",
+                        "in": "query",
+                        "description": "user city_id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "birth_date",
+                        "in": "query",
+                        "description": "birth_date",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "gender",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "locale",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/user/getProfile": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "update user info",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": true,
+                                "data": []
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "",
+                        "examples": {
+                            "application/json": {
+                                "status": false,
+                                "msg": "Unauthorized"
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {},
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

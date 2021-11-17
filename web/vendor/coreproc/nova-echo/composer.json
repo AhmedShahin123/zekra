@@ -1,0 +1,34 @@
+{
+    "name": "coreproc/nova-echo",
+    "description": "Adds Laravel Echo with your broadcast configuration to your Laravel Nova app",
+    "keywords": [
+        "laravel",
+        "nova",
+        "echo",
+        "websockets",
+        "socket-io",
+        "broadcasting",
+        "real-time"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Coreproc\\NovaEcho\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Coreproc\\NovaEcho\\NovaEchoServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

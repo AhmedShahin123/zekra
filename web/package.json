@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "build-transactions-total": "cd nova-components/TransactionsTotal && npm run dev",
+        "build-transactions-total-prod": "cd nova-components/TransactionsTotal && npm run prod"
+    }
+}

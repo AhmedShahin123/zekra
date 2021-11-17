@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - $MYSQL_HOST_PATH:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+        MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+        MYSQL_DATABASE: $DB_DATABASE
+  web:
+    container_name: web_app
+    depends_on:
+      - mysql
+    build:
+      dockerfile: $PWD/web/environments/$APP_ENV/Dockerfile
+      context: ./web
+    volumes:
+      - $PUBLIC_HOST_PATH:/var/www
+    restart: always
+    ports:
+      - 8000:8000
+      - 9000:9000
+    env_file:
+      - .env
+  
